@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pi-eink-display-reciever", "pi-eink-display-reciever\pi-eink-display-reciever.csproj", "{D8CD54AF-B563-43E3-AACD-5DB6B22AEDFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPD2in7Driver", "..\EPD2in7Driver\EPD2in7Driver\EPD2in7Driver.csproj", "{088E78B2-8E55-4C7E-9D4F-496FA15087F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8CD54AF-B563-43E3-AACD-5DB6B22AEDFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8CD54AF-B563-43E3-AACD-5DB6B22AEDFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8CD54AF-B563-43E3-AACD-5DB6B22AEDFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8CD54AF-B563-43E3-AACD-5DB6B22AEDFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{088E78B2-8E55-4C7E-9D4F-496FA15087F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{088E78B2-8E55-4C7E-9D4F-496FA15087F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{088E78B2-8E55-4C7E-9D4F-496FA15087F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{088E78B2-8E55-4C7E-9D4F-496FA15087F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
