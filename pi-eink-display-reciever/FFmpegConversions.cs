@@ -12,7 +12,21 @@ public class FFmpegConversions {
         }
 
         string fileHash = await GetFileMd5(videoPath);
-        return new DirectoryInfo(videoPath);
+        DirectoryInfo temporaryDirectory = new DirectoryInfo($"/tmp/{fileHash}");
+        if (temporaryDirectory.Exists && temporaryDirectory.GetFiles().Length > 0) {
+            // if temp directory exists and has files, presume its safe to use
+            Console.WriteLine(temporaryDirectory.FullName);
+            return temporaryDirectory;
+        }
+        var mediaInfo = await FFmpeg.GetMediaInfo(videoPath);
+
+        var conversion = FFmpeg.Conversions.New()
+            .AddStream(mediaInfo.VideoStreams)
+            .AddParameter($"-r 1")
+            .SetOutput(Path.Combine(temporaryDirectory.FullName, "output_%04d.pbm"));
+
+        await conversion.Start();
+        return temporaryDirectory;
     }
 
     private static async Task<string> GetFileMd5(string file) {
