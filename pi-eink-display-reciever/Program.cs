@@ -1,17 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Drawing.Processing;
-using SixLabors.ImageSharp.PixelFormats;
-using SixLabors.ImageSharp.Processing;
-using Image = SixLabors.ImageSharp.Image;
-using Point = SixLabors.ImageSharp.Point;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace pi_eink_display_receiver
 {
     internal class Program
     {
-        static void Main(string[] args) {
+        static async Task Main(string[] args) {
+            ServiceProvider serviceProvider = RegisterServices();
             var epd = new EPD2in7();
             epd.Initialize();
             epd.Clear();
@@ -32,6 +27,16 @@ namespace pi_eink_display_receiver
             });
                 
             epd.Display(newImage);
+        }
+        
+        private static ServiceProvider RegisterServices() {
+            IConfiguration configuration = new ConfigurationBuilder()
+                .AddJsonFile("settings.json")
+                .Build();
+            ServiceCollection serviceCollection = new ServiceCollection();
+            serviceCollection.AddSingleton(configuration);
+
+            return serviceCollection.BuildServiceProvider();
         }
     }
 }
